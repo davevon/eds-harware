@@ -34,7 +34,13 @@ namespace hardwarestore.Controllers
         // GET: SuppliersController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_repos.isExist(id))
+            {
+                return NotFound();
+            }
+            var typesofsupplier = _repos.FindById(id);
+            var Mappingtolist = _mapper.Map<SupplierViewModel>(typesofsupplier);
+            return View(Mappingtolist);
         }
 
         // GET: SuppliersController1/Create
@@ -112,16 +118,29 @@ namespace hardwarestore.Controllers
         // GET: SuppliersController1/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+
+            var leavetype = _repos.FindById(id);
+            var isSucess = _repos.Delete(leavetype);
+            if (!isSucess)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: SuppliersController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, SupplierViewModel model)
         {
             try
             {
+                var leavetype = _repos.FindById(id); 
+                var isSucess = _repos.Delete(leavetype);
+                if (!isSucess)
+                {
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
