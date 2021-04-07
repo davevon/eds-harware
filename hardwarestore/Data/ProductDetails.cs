@@ -10,9 +10,9 @@ namespace hardwarestore.Data
     public class ProductDetails
     {[Key]
         public int Id { get; set; }
-        [ForeignKey("ProductId")]
-        public Product Product { get; set; }
-        public int ProductId { get; set; }
+      
+        public string Name { get; set; }
+     
         [ForeignKey("SupplierId")]
         public Supplier Supplier { get; set; }
         public int SupplierId { get; set; }

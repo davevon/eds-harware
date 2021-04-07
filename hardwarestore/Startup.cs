@@ -37,7 +37,6 @@ namespace hardwarestore
 
             services.AddScoped<IProductDetailsRepository,ProductDetailsRepository>();
              services.AddScoped<IProductHistoryRepository,ProductHistoryRepository>();
-             services.AddScoped<IProductRepository,ProductRepository>();
              services.AddScoped<ISuppliersRepository,SupplierRepository>();
 
             // mappers
