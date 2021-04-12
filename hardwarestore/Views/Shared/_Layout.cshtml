@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,8 +10,8 @@
     <title>@ViewData["Title"] - hardware store</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -29,17 +33,25 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
-                                Manage
-                            </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item text-dark" href="#">Stocks</a>
-                                <a class="dropdown-item text-dark" asp-controller="productdetails" asp-action="Index">Products</a>
-                                <a class="dropdown-item text-dark" asp-controller="SuppliersController1" asp-action="Index">Suppliers</a>
-                                <a class="dropdown-item text-dark" href="#">item</a>
-                                 </div>
-                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            if (User.IsInRole("Administrator"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
+                                        Manage
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item text-dark" href="#">Stocks</a>
+                                        <a class="dropdown-item text-dark" asp-controller="productdetails" asp-action="Index">Products</a>
+                                        <a class="dropdown-item text-dark" asp-controller="SuppliersController1" asp-action="Index">Suppliers</a>
+                                        <a class="dropdown-item text-dark" href="#">item</a>
+                                    </div>
+                                </li>
+                            }
+
+                        }
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

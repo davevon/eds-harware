@@ -6,12 +6,15 @@ using AutoMapper;
 using hardwarestore.Contracts;
 using hardwarestore.Data;
 using hardwarestore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hardwarestore.Controllers
 {
- 
+
+    [Authorize (Roles ="Administrator")]
+
     public class SuppliersController1 : Controller
     {
         private readonly ISuppliersRepository _repos;
@@ -22,6 +25,7 @@ namespace hardwarestore.Controllers
             _repos = repos;
             _mapper = mapper;
         }
+ 
             // GET: SuppliersController1
         public ActionResult Index()
         {
