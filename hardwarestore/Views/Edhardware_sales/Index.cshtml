@@ -1,0 +1,256 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+   @* Layout = "~/Views/Shared/style.cshtml";*@
+}
+<h1>Edhardware POS</h1>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark"> </nav>
+    <span class="navbar-brand m-md-0 h1"> Sales Section</span>
+    <div class="row">
+
+
+        <div class="col-sm-3">
+            <div class="container">
+                <div class="list-group-item list-group-item-action active">Item</div>
+                <div class="panel bg-dark  " style="color:aquamarine">   </div>
+                <form id="form-project">
+
+                    <div class="form-group">
+
+
+                        <div>
+                            <img src="~images\sets.jpg" id="s" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal" />
+                            <b> ToolSets</b>
+                        </div>
+
+
+                        <div>
+                            <img src="~images\steel.jpg" id="t" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal" />
+                            <b> Steel</b>
+                        </div>
+
+                        <div>
+                            <img src="~images\lumber.jfif" id="u" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal" />
+                            <b> Board</b>
+                        </div>
+                        <div>
+                            <img src="~images\Pvc adesive.jfif" id="v" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal "/>
+                            <b> ToolSets</b>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-6">
+
+            <div class="container">
+
+
+
+                <div div class="list-group-item list-group-item-action active">Add Products</div>
+
+                <table id="tbl-item" class="table table-dark table-bordered" cellpadding="0" cellspacing="0" align="center">
+                    
+                    <tr>
+
+
+                        <td>Delete</td>
+                        <td>Item</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>total</td>
+                    </tr>
+                </table>
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+        <div class="col-sm-3">
+
+
+
+            <div class="container">
+
+
+
+                <div div class="list-group-item list-group-item-action active">Sales</div>
+
+
+
+                <div>
+                    <label>total</label>
+
+                    <input type="text" style="color:yellowgreen; Background:black; font-size:30px;" id="total" name="total" placeholder="total" />
+
+
+                </div>
+
+                <div>
+
+
+                    <button type="button" class="btn-warning"  name="reset" id="reset" onclick="reset()"> Reset</button>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter THe Quantity</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    ...<label>Quantity</label>
+                       <input type="Number" id="qty" name="qty" placeholder="qty" value="1" />
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"onclick="add()">Add</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section Scripts{
+
+        <script src="~/js/site.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    
+        <script type="text/javascript">
+
+            var total = 0;
+            var tot = 0;
+            var item = null;
+            var price = 0;
+
+            var a = " "
+            $("img").on("click", function () {
+                a = $(this).prop('id')
+
+            });
+
+            function add()
+
+            {
+
+            
+                if(a == "s")
+
+                {
+                    item = "Toolset";
+                    price = 45678.90;
+
+                }
+
+                else if (a == "t") 
+
+                {
+                    item = "Steel";
+                    price = 51132;
+                }
+                 else if (a == "u") 
+
+                {
+                    item = "Lumber board";
+                    price = 6000;
+                }
+                   else if (a == "v") 
+
+                {
+                    item = "PVC Adesive";
+                    price = 9000;
+                }
+                var qty = $("#qty").val();
+                tot = qty * price;
+
+
+                var table = "<tr>" +
+                    "<td><button type='button' name='record' class='btn btn-warning' onclick='deleterow(this)'>Delete</td>" +
+                    "<td>" + item + "</td>" +
+                    "<td>" + price + "</td>" +
+                    "<td>" + qty + "</td>" +
+                    "<td>" + tot + "</td>" +
+
+                    "</tr>";
+
+                total += Number(tot);
+                $("#total").val(total);
+                $("#tbl-item tbody").append(table);
+                ("#exampleModal").modal("hide");
+
+                }
+
+                function deleterow(e) {
+                    total_cost = parseInt($(e).parent().parent().find('td:last').text(), 10)
+                    total -= total_cost;
+                    $('#total').val(total);
+                    $(e).parent().parent().remove();
+
+                }
+
+            function reset() {
+
+
+                location.reload();
+            }
+
+        </script>
+    }  
+</body>
+</html>
