@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductId)
+                @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SupplierId)
@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.ProductPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Queantity)
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
+                @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SupplierId)
@@ -52,11 +52,10 @@
                 @Html.DisplayFor(modelItem => item.ProductPrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Queantity)
+                @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
