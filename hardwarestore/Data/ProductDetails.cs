@@ -20,5 +20,6 @@ namespace hardwarestore.Data
         public int ProductPrice { get; set; }
         public int Queantity{ get; set; }
 
+
     }
 }
