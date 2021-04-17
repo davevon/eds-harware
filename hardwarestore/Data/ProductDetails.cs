@@ -22,5 +22,6 @@ namespace hardwarestore.Data
 
         public int ReOrderLevel {get;set;}
 
+
     }
 }
