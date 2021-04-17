@@ -25,11 +25,7 @@ namespace hardwarestore.Models
 
 
     }
-  /*  public class CreateLeaveTypeViewModel
-    {
-        public string SupplierName { set; get; }
-
-    }*/
+   
 
 
 }

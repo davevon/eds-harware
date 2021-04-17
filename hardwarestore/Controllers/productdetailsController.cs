@@ -6,32 +6,46 @@ using AutoMapper;
 using hardwarestore.Contracts;
 using hardwarestore.Data;
 using hardwarestore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hardwarestore.Controllers
 {
+    [Authorize(Roles ="Administrator")]
     public class productdetailsController : Controller
 
     {
-        private readonly IProductDetailsRepository _repos;
+        private readonly ISuppliersRepository _Suppliersrepos;
+          private readonly IProductDetailsRepository _repos;
+
         private readonly IMapper _mapper;
-        public productdetailsController(IProductDetailsRepository repos, IMapper mapper)
+        private readonly UserManager<IdentityUser> _userManager;
+        public productdetailsController(IProductDetailsRepository repos, IMapper mapper,
+             ISuppliersRepository Suppliersrepos, UserManager<IdentityUser> userManager)
         {
             _repos = repos;
-
+            _Suppliersrepos = Suppliersrepos;
             _mapper = mapper;
+            _userManager = userManager;
         }
         // GET: productdetails
         public ActionResult Index()
         {
             var typesofdetails = _repos.FindAll().ToList();
             var mappingtolist = _mapper.Map<List<ProductDetails>, List<ProductDetailsViewModel>>(typesofdetails);
-
+            
             return View(mappingtolist);
           
         }
 
+       /* public ActionResult SetSuppliers(int id)
+        {
+            var employee = _userManager.GetUsersInRoleAsync("EMployee").Result;
+        
+        }
+*/
         // GET: productdetails/Details/5
         public ActionResult Details(int id)
         {

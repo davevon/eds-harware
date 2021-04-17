@@ -16,12 +16,22 @@ namespace hardwarestore.Models
         public string ProductName { get; set; }
 
       
-        //public Supplier Supplier { get; set; }
+        public SupplierViewModel Supplier { get; set; }
         public int SupplierId { get; set; }
+
         public IEnumerable<SelectListItem> productdetails;
         public string ProductDescription { get; set; }
         public int ProductPrice { get; set; }
         public int Quantity { get; set; }
+        [Required]
+        [Range(350,1000, ErrorMessage = "Stocks Running low ")]
+        public int ReOrderLevel { get; set; }
+
+    }
+
+    public class CreateLeaveTypeViewModel
+    {
+        public List< SupplierViewModel> Suppliers { set; get; }
 
     }
 }
