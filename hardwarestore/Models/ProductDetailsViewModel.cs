@@ -15,7 +15,7 @@ namespace hardwarestore.Models
         ///public Product Product { get; set; }
         public string ProductName { get; set; }
 
-      
+
         public SupplierViewModel Supplier { get; set; }
         public int SupplierId { get; set; }
 
@@ -23,8 +23,9 @@ namespace hardwarestore.Models
         public string ProductDescription { get; set; }
         public int ProductPrice { get; set; }
         public int Quantity { get; set; }
+
         [Required]
-        [Range(350,1000, ErrorMessage = "Stocks Running low ")]
+        [Range(350,1000)]
         public int ReOrderLevel { get; set; }
 
     }
