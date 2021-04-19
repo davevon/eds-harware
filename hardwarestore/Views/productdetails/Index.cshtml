@@ -8,8 +8,8 @@
 
 <p>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+</p>;
+<table id="tblData" class="table">
     <thead>
         <tr>
           @*  <th>
@@ -72,3 +72,12 @@
 }
     </tbody>
 </table>
+@section Scripts{ 
+<script>
+    $(document).ready(function () {
+        $('#tblData').DataTable();
+    });
+
+
+</script>
+}

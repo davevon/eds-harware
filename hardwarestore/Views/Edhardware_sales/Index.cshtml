@@ -20,7 +20,47 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark"> </nav>
-    <span class="navbar-brand m-md-0 h1"> Sales Section</span>
+    <span class="navbar-brand m-md-0 h1"> Check Out System</span>
+
+
+
+
+
+
+
+    <div class="col-sm-3">
+
+
+
+        <div class="container">
+
+
+
+            <div style="margin-bottom:10px" class="list-group-item list-group-item-action active">Customer Info</div>
+
+
+
+            <div>
+     
+
+                <input type="text" style="color:yellowgreen; Background:black; font-size:30px;" id="Customer" name="Enter Name Here" placeholder="Customer" />
+
+
+            </div>
+
+            <div>
+
+
+                <input type="text" style="color:yellowgreen; Background:black; font-size:30px;" id="CustomerID" name="customer" placeholder="Customer ID" />
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
     <div class="row">
 
 
@@ -28,7 +68,7 @@
 
 
             <div class="container">
-                <div class="list-group-item list-group-item-action active">Item</div>
+                <div style="margin-bottom:20px" class="list-group-item list-group-item-action active">Item</div>
 
                 <div class="panel bg-dark  " style="color:aquamarine">   </div>
                 <form id="form-project">
@@ -37,22 +77,22 @@
 
 
                         <div>
-                            <img src="~images\sets.jpg" id="s" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal" />
+                            <img src="~images\sets.jpg" id="s" class="photo" width="100" height="100" data-toggle="modal" data-target="#exampleModal" />
                             <b> ToolSets</b>
                         </div>
 
 
                         <div>
-                            <img src="~images\steel.jpg" id="t" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal" />
+                            <img src="~images\steel.jpg" id="t" class="photo" width="100" height="100" data-toggle="modal" data-target="#exampleModal" />
                             <b> Steel</b>
                         </div>
 
                         <div>
-                            <img src="~images\lumber.jfif" id="u" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal" />
+                            <img src="~images\lumber.jfif" id="u" class="photo" width="100" height="100" data-toggle="modal" data-target="#exampleModal" />
                             <b> Board</b>
                         </div>
                         <div>
-                            <img src="~images\Pvc adesive.jfif" id="v" class="photo" width="100" height="100"data-toggle="modal" data-target="#exampleModal "/>
+                            <img src="~images\Pvc adesive.jfif" id="v" class="photo" width="100" height="100" data-toggle="modal" data-target="#exampleModal " />
                             <b> ToolSets</b>
                         </div>
 
@@ -79,7 +119,7 @@
                 <div div class="list-group-item list-group-item-action active">Add Products</div>
 
                 <table id="tbl-item" class="table table-dark table-bordered" cellpadding="0" cellspacing="0" align="center">
-                    
+
                     <tr>
 
 
@@ -91,9 +131,19 @@
                     </tr>
                 </table>
 
+                <div>
 
 
+                    <button type="button" class="btn-warning" name="Save" id="reset" onclick="save()"> Save</button>
 
+                </div>
+
+                <div>
+
+
+                    <button type="button" class="btn-warning" name="Print" id="reset" onclick="print()"> Print</button>
+
+                </div>
 
             </div>
 
@@ -126,7 +176,7 @@
                 <div>
 
 
-                    <button type="button" class="btn-warning"  name="reset" id="reset" onclick="reset()"> Reset</button>
+                    <button type="button" class="btn-warning" name="reset" id="reset" onclick="reset()"> Reset</button>
 
                 </div>
 
@@ -139,7 +189,7 @@
     </div>
 
 
-    
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -154,15 +204,15 @@
                 <div class="modal-body">
 
                     ...<label>Quantity</label>
-                       <input type="Number" id="qty" name="qty" placeholder="qty" value="1" />
+                    <input type="Number" id="qty" name="qty" placeholder="qty" value="1" />
 
 
 
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success"onclick="add()">Add</button>
-                    
+                    <button type="button" class="btn btn-success" onclick="add()">Add</button>
+
                 </div>
             </div>
         </div>
@@ -174,7 +224,7 @@
         <script src="~/js/site.js"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
-    
+
         <script type="text/javascript">
 
             var total = 0;
@@ -188,34 +238,24 @@
 
             });
 
-            function add()
+            function add() {
 
-            {
 
-            
-                if(a == "s")
-
-                {
+                if (a == "s") {
                     item = "Toolset";
                     price = 45678.90;
 
                 }
 
-                else if (a == "t") 
-
-                {
+                else if (a == "t") {
                     item = "Steel";
                     price = 51132;
                 }
-                 else if (a == "u") 
-
-                {
+                else if (a == "u") {
                     item = "Lumber board";
                     price = 6000;
                 }
-                   else if (a == "v") 
-
-                {
+                else if (a == "v") {
                     item = "PVC Adesive";
                     price = 9000;
                 }
@@ -237,15 +277,15 @@
                 $("#tbl-item tbody").append(table);
                 ("#exampleModal").modal("hide");
 
-                }
+            }
 
-                function deleterow(e) {
-                    total_cost = parseInt($(e).parent().parent().find('td:last').text(), 10)
-                    total -= total_cost;
-                    $('#total').val(total);
-                    $(e).parent().parent().remove();
+            function deleterow(e) {
+                total_cost = parseInt($(e).parent().parent().find('td:last').text(), 10)
+                total -= total_cost;
+                $('#total').val(total);
+                $(e).parent().parent().remove();
 
-                }
+            }
 
             function reset() {
 
@@ -254,6 +294,6 @@
             }
 
         </script>
-    }  
+    }
 </body>
 </html>
