@@ -13,8 +13,10 @@ namespace hardwarestore.Data
         [ForeignKey("RequestingEmployeeViewId")]
         public Employee RequestingEmployeeView { get; set; }
    public string RequestingEmployeeViewId { get; set; }
-   public DateTime DateViewed { get; set; }
+   public DateTime Datesold { get; set; }
    public bool? Approved { get; set; }
+        public string productId { get; set; }
+        public decimal totalPaid { get; set; }
 
     }
 }
