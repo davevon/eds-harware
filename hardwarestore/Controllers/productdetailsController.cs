@@ -53,8 +53,8 @@ namespace hardwarestore.Controllers
             {
                 return NotFound();
             }
-            var typesofsupplier = _repos.FindById(id);
-            var Mappingtolist = _mapper.Map<SupplierViewModel>(typesofsupplier);
+            var typesofproducts = _repos.FindById(id);
+            var Mappingtolist = _mapper.Map<ProductDetailsViewModel>(typesofproducts);
             return View(Mappingtolist);
         }
 
