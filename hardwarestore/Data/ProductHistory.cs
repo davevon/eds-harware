@@ -16,7 +16,8 @@ namespace hardwarestore.Data
    public DateTime Datesold { get; set; }
    public bool? Approved { get; set; }
         public string productId { get; set; }
-        public decimal totalPaid { get; set; }
+        
+        public double totalPaid { get; set; }
 
     }
 }
