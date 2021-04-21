@@ -54,7 +54,6 @@ namespace hardwarestore.Reopository
 
         public bool save()
         {
-            _db.SaveChanges();
             return _db.SaveChanges() > 0;
            // throw new NotImplementedException();
         }

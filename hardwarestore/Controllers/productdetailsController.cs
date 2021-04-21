@@ -67,7 +67,7 @@ namespace hardwarestore.Controllers
         // POST: productdetails/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProductDetails model)
+        public ActionResult Create(ProductDetailsViewModel model)
         {
             try
             {
