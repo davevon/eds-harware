@@ -17,6 +17,7 @@ namespace hardwarestore.Mappers
             CreateMap<ProductDetails, ProductDetailsViewModel>().ReverseMap();
 
             CreateMap<Employee, EmployeeViewModels>().ReverseMap();
+            CreateMap<Customer, CustomerViewModel>().ReverseMap();
 
 
 

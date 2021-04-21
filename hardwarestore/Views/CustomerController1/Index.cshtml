@@ -1,0 +1,55 @@
+﻿@model IEnumerable<hardwarestore.Models.CustomerViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerNAme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CellNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Membership)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerNAme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Membership)
+            </td>
+            <td>
+                @* @Html.ActionLink("Edit", "Edit", new {  id=item.Id}) *@
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.CustomerId"> <i class="fa fa-pencil" aria-hidden="true"> </i>Edit</a>
+                @* <a asp-action="Details " class="btn btn-success" asp-route-id="@item.Id"> <i class="fa fa-info-circle" aria-hidden="true"> </i> Details</a>*@
+                <a asp-action="Details" class="btn btn-success" asp-route-id="@item.CustomerId">Details</a>
+
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CustomerId" onclick="return confirm('Are you sure you would want to delete this record ?😣')"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
+                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
