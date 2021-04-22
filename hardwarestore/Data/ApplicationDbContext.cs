@@ -17,6 +17,8 @@ namespace hardwarestore.Data
         public DbSet<ProductHistory> ProdHistories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Customer> Customers { get; set; }
+         public DbSet<SalesItem> SalesItems { get; set; }
+
 
     }
 }
