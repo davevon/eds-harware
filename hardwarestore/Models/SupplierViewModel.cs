@@ -25,7 +25,15 @@ namespace hardwarestore.Models
 
 
     }
-   
+   /* public class CalcationViewModel
+    {
+        [Display(Name ="total number of Suppliers")]
+        public int Totalsuppliers { get; set; }
+
+        public int ReorderLevelTotal { get; set; }
+        public ICollection<SupplierViewModel> suppliers { get; set; }
+    }
+*/
 
 
 }

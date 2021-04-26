@@ -30,6 +30,7 @@ namespace hardwarestore.Controllers
         public ActionResult Index()
         {
             var typesofsuppliers = _repos.FindAll().ToList();
+
             var mappingtolist=_mapper.Map <List<Supplier>,  List < SupplierViewModel >> (typesofsuppliers);
 
             return View(mappingtolist);

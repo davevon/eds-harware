@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<hardwarestore.Models.SupplierViewModel>
 
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -10,9 +11,30 @@
 <p>
     <a asp-action="Create" class="btn btn-outline-primary">  <i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
 </p>
+<div class="row">
+    <div class="col-md-3">
+        <div class=" card" style="width: 18rem;">
+            <div class="card-body text-center">
+                @*<h1 class="card-title"> </h1>*@
+                <h5 class="card-title"> @Model.Count().ToString() </h5>
+                <h1>@Html.DisplayNameFor(Model=> Model.suppliers)</h1>
+@*            <h5>    @Html.DisplayFor(model => ))</h5>*@
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<hr />
+<h1> Suppliers Log</h1>
+<hr />
 <table id="tblData" class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.SupplierName)
             </th>
@@ -32,8 +54,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            
+            <td>
                 @Html.DisplayFor(modelItem => item.SupplierName)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.SupplierEmailAddress)
             </td>

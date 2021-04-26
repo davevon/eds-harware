@@ -12,13 +12,14 @@ namespace hardwarestore.Models
         [Key]
         public int SalesItemId { get; set; }
 
-        public CustomerViewModel Customers { get; set; }
+       // public CustomerViewModel Customers { get; set; }
+        public IEnumerable<SelectListItem> Customers { get; set; }
         public int CustomerId { get; set; }
         [Required]
         public string CustomerNAme { get; set; }
 
-        public IEnumerable<SelectListItem>  SalesListItems{ get; set; }
-
+       // public IEnumerable<SelectListItem>  SalesListItems{ get; set; }
+        public  IEnumerable<SelectListItem> ProductDetails { get; set; }
         public int Id { get; set; }
         [Required]
         public string ProductName { get; set; }
