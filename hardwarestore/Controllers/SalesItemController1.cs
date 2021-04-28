@@ -54,8 +54,8 @@ namespace hardwarestore.Controllers
             var Products = _ProdRepo.FindAll();
             var productItems = Products.Select(q => new SelectListItem
             {
-                Text = q.ProductName,
-                Value = q.ToString()
+                Text = $"{q.ProductName} - ${q.ProductPrice}",
+                Value = q.Id.ToString()
 
 
             }); ;

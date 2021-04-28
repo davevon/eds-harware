@@ -21,6 +21,7 @@ namespace hardwarestore.Data
         
         [ForeignKey("ProdDetailsId")]
         public ProductDetails ProdDetails { get; set; }
+
         public int Id { get; set; }
 
         public string ProductName { get; set; }

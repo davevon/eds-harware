@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace hardwarestore.Controllers
 {
@@ -60,8 +61,22 @@ namespace hardwarestore.Controllers
 
         // GET: productdetails/Create
         public ActionResult Create()
-        {
-            return View();
+        {//var Customers = _Suppliersrepos.FindAll();
+            var suppliers = _Suppliersrepos.FindAll();
+            var supplierItems = suppliers.Select(q => new SelectListItem
+            {
+                Text = q.SupplierName,
+                Value = q.Id.ToString()
+
+
+            }); 
+            var model = new ProductDetailsViewModel
+            {
+                Suppliers = supplierItems
+
+            };
+
+            return View(model);
         }
 
         // POST: productdetails/Create

@@ -20,6 +20,7 @@ namespace hardwarestore.Models
 
        // public IEnumerable<SelectListItem>  SalesListItems{ get; set; }
         public  IEnumerable<SelectListItem> ProductDetails { get; set; }
+        [Display(Name = "Product Name")]
         public int Id { get; set; }
         [Required]
         public string ProductName { get; set; }
