@@ -51,6 +51,14 @@ namespace hardwarestore.Controllers
         public ActionResult Create()
         {
             var Customers = _custumRepo.FindAll();
+            var customername = Customers.Select(q => new SelectListItem
+            {
+                Text = q.CustomerNAme,
+                Value = q.CustomerId.ToString()
+            }); 
+
+            
+
             var Products = _ProdRepo.FindAll();
             var productItems = Products.Select(q => new SelectListItem
             {
@@ -58,10 +66,11 @@ namespace hardwarestore.Controllers
                 Value = q.Id.ToString()
 
 
-            }); ;
+            }); 
             var model = new SalesItemViewModel
             {
-                ProductDetails = productItems
+                ProductDetails = productItems,
+                Customers= customername
 
             };
 
@@ -73,27 +82,85 @@ namespace hardwarestore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SalesItemViewModel model)
         {
-            try
-            {
-                if (!ModelState.IsValid)
+           // var Customers = _custumRepo.FindAll();
+              try
+                  {
+                //customer making the purchase and getting the user who is sign in.
+
+                //   getting if the person is inside of the data base
+                // var customer = _custumRepo.GetCustomerByID(customerIdentity.Id);
+                //var customerIdentity = _userManager.GetUserAsync(User).Result;
+                var Customers = _custumRepo.FindAll();
+                var customername = Customers.Select(q => new SelectListItem
                 {
+                    Text = q.CustomerNAme,
+                    Value = q.CustomerId.ToString()
+                });
+
+                var Products = _ProdRepo.FindAll();
+                var productItems = Products.Select(q => new SelectListItem
+                {
+                    Text = $"{q.ProductName} - ${q.ProductPrice}",
+                    Value = q.Id.ToString()
+
+
+                });
+                model.Customers = customername;
+                model.ProductDetails = productItems;
+                
+                var product = _ProdRepo.FindById(model.Id);
+                  var  totalcost = model.Total;
+
+                if (product.Quantity >model.Quantity )
+                {
+                   // ModelState.AddModelError("", "Please  place quantity value");
+               //   totalcost = salesonitem.ProductPrice * salesonitem.Quantity;
+                    totalcost = product.ProductPrice * model.Quantity;
+               
+                }
+                else if (model.Quantity<=0)
+                {
+                    ModelState.AddModelError("", "please enter a value for the quantity");
+                   
                     return View(model);
                 }
-                var product = _mapper.Map<SalesItem>(model);
-                var issuccessful = _Salesrepos.Create(product);
-                if (!issuccessful)
+                
+                model.Total=totalcost;
+                var calculation = new SalesItemViewModel
+                {//objects
+                    CustomerId=model.CustomerId,
+                   // CustomerNAme=model.CustomerNAme,
+                    Customers= model.Customers,
+                    ProductDetails= model.ProductDetails,
+                    ProductName=model.ProductName,
+                    ProductPrice = model.ProductPrice,
+                   Quantity = model.Quantity,
+                   SalesItemId= model.SalesItemId,
+                   Total = model.Total,
+                    Id=model.Id
+                   
+
+
+
+
+                };
+
+                var salesproduct = _mapper.Map<SalesItem>(calculation);
+                var issuccessful = _Salesrepos.Create(salesproduct);
+                if (!issuccessful)//if the insertion failed
                 {
-                    ModelState.AddModelError("", "Something Went wrong......");
+                    ModelState.AddModelError("", "Something Went wrong submitting your record......");
                     return View(model);
                 }
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
-                ModelState.AddModelError("", "Something Went wrong......");
+                ModelState.AddModelError("", "Something Went wrong submitting your record......");
                 return View(model);
             }
-        }
+        
+    }
 
         // GET: SalesItemController1/Edit/5
         public ActionResult Edit(int id)

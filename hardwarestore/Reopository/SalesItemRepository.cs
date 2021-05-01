@@ -30,8 +30,8 @@ namespace hardwarestore.Reopository
 
         public ICollection<SalesItem> FindAll()
         {
-            _db.SalesItems.ToList(); ;
-            return _db.SalesItems.ToList();
+          var items=  _db.SalesItems.ToList(); 
+            return items;
         }
 
         public SalesItem FindById(int id)
