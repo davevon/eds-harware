@@ -10,7 +10,7 @@ namespace hardwarestore.Models
     public class SalesItemViewModel
     {
         [Key]
-        public int SalesItemId { get; set; }
+        public int SalesId { get; set; }
 
        // public CustomerViewModel Customers { get; set; }
         public IEnumerable<SelectListItem> Customers { get; set; }
@@ -21,7 +21,7 @@ namespace hardwarestore.Models
        // public IEnumerable<SelectListItem>  SalesListItems{ get; set; }
         public  IEnumerable<SelectListItem> ProductDetails { get; set; }
         [Display(Name = "Product Name")]
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         [Required]
         public string ProductName { get; set; }
         [Required]

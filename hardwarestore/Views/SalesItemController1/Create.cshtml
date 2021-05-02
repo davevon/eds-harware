@@ -12,38 +12,38 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="SalesItemId" class="control-label"></label>
-                <input asp-for="SalesItemId" class="form-control" />
-                <span asp-validation-for="SalesItemId" class="text-danger"></span>
-            </div>*@
+            <div class="form-group">
+                <label asp-for="SalesId" class="control-label"></label>
+                <input asp-for="SalesId" class="form-control" />
+                <span asp-validation-for="SalesId" class="text-danger"></span>
+            </div>
             @*z<div class="form-group">
                 <label asp-for="CustomerId" class="control-label"></label>
                 <input asp-for="CustomerId" class="form-control" />
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
             </div>*@
         <div class="form-group">
-            <label asp-for="CustomerNAme" class="control-label"></label>
-            @Html.DropDownListFor(q => q.CustomerNAme, new SelectList(Model.Customers, "Value", "Text"), "Select A product",
+            <label asp-for="CustomerId" class="control-label"></label>
+            @Html.DropDownListFor(q => q.CustomerId, new SelectList(Model.Customers, "Value", "Text"), "Select A product",
              new { @class = "form-control" })
-            <span asp-validation-for="CustomerNAme" class="text-danger"></span>
+            <span asp-validation-for="CustomerId" class="text-danger"></span>
         </div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-             @Html.DropDownListFor(q=> q.Id,new SelectList(Model.ProductDetails,"Value","Text"),"Select A product",
+                <label asp-for="ProductId" class="control-label"></label>
+             @Html.DropDownListFor(q=> q.ProductId,new SelectList(Model.ProductDetails,"Value","Text"),"Select A product",
             new { @class="form-control"})
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
             </div>
             @*<div class="form-group">
                 <label asp-for="ProductName" class="control-label"></label>
                 <input asp-for="ProductName" class="form-control" />
                 <span asp-validation-for="ProductName" class="text-danger"></span>
             </div>*@
-            @*<div class="form-group">
+            <div class="form-group">
                 <label asp-for="ProductPrice" class="control-label"></label>
                 <input asp-for="ProductPrice" class="form-control" />
                 <span asp-validation-for="ProductPrice" class="text-danger"></span>
-            </div>*@
+            </div>
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
                 <input asp-for="Quantity" class="form-control" />

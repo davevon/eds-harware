@@ -63,7 +63,7 @@ namespace hardwarestore.Controllers
             var productItems = Products.Select(q => new SelectListItem
             {
                 Text = $"{q.ProductName} - ${q.ProductPrice}",
-                Value = q.Id.ToString()
+                Value = q.ProductId.ToString()
 
 
             }); 
@@ -101,14 +101,14 @@ namespace hardwarestore.Controllers
                 var productItems = Products.Select(q => new SelectListItem
                 {
                     Text = $"{q.ProductName} - ${q.ProductPrice}",
-                    Value = q.Id.ToString()
+                    Value = q.ProductId.ToString()
 
 
                 });
                 model.Customers = customername;
                 model.ProductDetails = productItems;
                 
-                var product = _ProdRepo.FindById(model.Id);
+                var product = _ProdRepo.FindById(model.ProductId);
                   var  totalcost = model.Total;
 
                 if (product.Quantity >model.Quantity )
@@ -129,15 +129,15 @@ namespace hardwarestore.Controllers
                 var calculation = new SalesItemViewModel
                 {//objects
                     CustomerId=model.CustomerId,
-                   // CustomerNAme=model.CustomerNAme,
+                  CustomerNAme=model.CustomerNAme,
                     Customers= model.Customers,
                     ProductDetails= model.ProductDetails,
                     ProductName=model.ProductName,
                     ProductPrice = model.ProductPrice,
                    Quantity = model.Quantity,
-                   SalesItemId= model.SalesItemId,
+                   SalesId= model.SalesId,
                    Total = model.Total,
-                    Id=model.Id
+                    ProductId=model.ProductId
                    
 
 
@@ -145,7 +145,8 @@ namespace hardwarestore.Controllers
 
                 };
 
-                var salesproduct = _mapper.Map<SalesItem>(calculation);
+                var salesproduct = _mapper.Map<SalesItem> (calculation);
+              
                 var issuccessful = _Salesrepos.Create(salesproduct);
                 if (!issuccessful)//if the insertion failed
                 {

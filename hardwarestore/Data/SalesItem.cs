@@ -14,7 +14,7 @@ namespace hardwarestore.Data
 
         [ForeignKey("CustomerId")]
    
-        public Customer Customers { get; set; }
+        public Customer Customer { get; set; }
         public int CustomerId { get; set; }
 
         public string CustomerNAme{ get; set; }
@@ -22,7 +22,7 @@ namespace hardwarestore.Data
         [ForeignKey("ProdDetailsId")]
         public ProductDetails ProdDetails { get; set; }
 
-        public int Id { get; set; }
+        public int ProductId { get; set; }
 
         public string ProductName { get; set; }
         
