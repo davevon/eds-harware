@@ -36,7 +36,26 @@ namespace hardwarestore.Controllers
             var typesofdetails = _Salesrepos.FindAll().ToList();
             var mappingtolist = _mapper.Map<List<SalesItem>, List<SalesItemViewModel>>(typesofdetails);
 
-            return View(mappingtolist);
+            var model = new SalesItemViewModel
+            {
+                SalesId=int.Parse(mappingtolist.ToString()),
+                CustomerNAme = mappingtolist.ToString(),
+
+                ProductName = mappingtolist.ToString(),
+                ProductPrice = int.Parse(mappingtolist.ToString()),
+                Quantity= int.Parse(mappingtolist.ToString()),
+                Total= int.Parse(mappingtolist.ToString())
+
+         
+            };
+          
+            /*Include(q=> q.CustomerNAme)
+                .Include(q=>q.ProductPrice)
+              
+                */
+
+
+            return View(model);
 
 
         }

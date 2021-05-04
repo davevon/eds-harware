@@ -1,9 +1,10 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using hardwarestore.Contracts;
 using hardwarestore.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace hardwarestore.Reopository
 {
@@ -30,13 +31,30 @@ namespace hardwarestore.Reopository
 
         public ICollection<SalesItem> FindAll()
         {
-          var items=  _db.SalesItems.ToList(); 
+          var items=  _db.SalesItems
+               
+              
+                .Include(q=>q.Customer)
+                .Include(q=>q.ProdDetails)
+                .ToList(); 
             return items;
         }
 
         public SalesItem FindById(int id)
         {
-            _db.SalesItems.Find(id);
+            _db.SalesItems
+
+              
+             
+                .Include(q => q.Customer)
+                .Include(q => q.ProdDetails)
+
+                .FirstOrDefault(q=> q.SalesItemId==id);
+
+
+
+
+
             return _db.SalesItems.Find(id);
         }
 

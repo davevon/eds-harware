@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Checking out</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,18 +12,18 @@
 <table class="table">
     <thead>
         <tr>
-            @*<th>
+            <th>
                 @Html.DisplayNameFor(model => model.SalesId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerId)
-            </th>*@
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CustomerNAme)
             </th>
-            @* <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
@@ -40,59 +40,38 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-               @* <td>
-                    @Html.DisplayFor(modelItem => item.SalesId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerId)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerNAme)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Total)
-
-                </td>
-                <td>
-                    @*               @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-
-                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.SalesId"> <i class="fa fa-pencil" aria-hidden="true"> </i>Edit</a>
-                    @* <a asp-action="Details " class="btn btn-success" asp-route-id="@item.Id"> <i class="fa fa-info-circle" aria-hidden="true"> </i> Details</a>*@
-                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.SalesId">Details</a>
-
-                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.SalesId" onclick="return confirm('Are you sure you would want to delete this record ?😣')"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-
-
-
-                </td>
-            </tr>
-        }
-
-
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerNAme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
     </tbody>
-
 </table>
-
-<div>
-
-
-    <button type="button" class="btn-warning" name="Print" id="reset" onclick="print()"> Print</button>
-
-</div>
