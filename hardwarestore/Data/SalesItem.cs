@@ -19,7 +19,7 @@ namespace hardwarestore.Data
 
         public string CustomerNAme{ get; set; }
         
-        [ForeignKey("ProdDetailsId")]
+        [ForeignKey("ProductId")]
         public ProductDetails ProdDetails { get; set; }
 
         public int ProductId { get; set; }
@@ -30,5 +30,6 @@ namespace hardwarestore.Data
         public int Quantity { get; set; }
 
         public double Total { get; set; }
+        public DateTime SalesDate { get; set; }
     }
 }

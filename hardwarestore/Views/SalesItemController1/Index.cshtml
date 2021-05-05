@@ -9,24 +9,24 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="tblData" class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SalesId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CustomerId)
-            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.SalesId)
+        </th>*@
+            @*<th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.CustomerNAme)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ProductPrice)
             </th>
@@ -36,29 +36,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.Total)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesDate)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            @* <td>
+            @Html.DisplayFor(modelItem => item.SalesId)
+        </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.CustomerId)
+        </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.SalesId)
+                @Html.DisplayFor(modelItem => item.Customer.CustomerNAme)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
+                @Html.DisplayFor(modelItem => item.ProdDetails.ProductName)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerNAme)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
+                @Html.DisplayFor(modelItem => item.ProdDetails.ProductPrice)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
@@ -67,11 +69,29 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.SalesDate)
+            </td>
+            @* <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>*@
+
+
+            <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+        $('#tblData').DataTable();
+    });
+
+
+    </script>
+}

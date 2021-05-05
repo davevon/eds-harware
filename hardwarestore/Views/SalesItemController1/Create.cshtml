@@ -12,16 +12,18 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <@*div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="SalesId" class="control-label"></label>
                 <input asp-for="SalesId" class="form-control" />
                 <span asp-validation-for="SalesId" class="text-danger"></span>
-            </div>*@
-            @*z<div class="form-group">
+            </div>
+            <div class="form-group">
                 <label asp-for="CustomerId" class="control-label"></label>
                 <input asp-for="CustomerId" class="form-control" />
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div>*@
+            </div>
+*@
+
         <div class="form-group">
             <label asp-for="CustomerId" class="control-label"></label>
             @Html.DropDownListFor(q => q.CustomerId, new SelectList(Model.Customers, "Value", "Text"), "Select A product",
@@ -49,11 +51,11 @@
                 <input asp-for="Quantity" class="form-control" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
-          @*  <div class="form-group hide">
-                <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" />
-                <span asp-validation-for="Total" class="text-danger"></span>
-            </div>*@
+          <div class="form-group hide">
+                <label asp-for="SalesDate" class="control-label"></label>
+                <input asp-for="SalesDate" class="form-control" />
+                <span asp-validation-for="SalesDate" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success" />
             </div>

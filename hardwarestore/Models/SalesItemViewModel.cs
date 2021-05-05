@@ -12,13 +12,14 @@ namespace hardwarestore.Models
         [Key]
         public int SalesId { get; set; }
 
-       // public CustomerViewModel Customers { get; set; }
+        public CustomerViewModel Customer { get; set; }
         public IEnumerable<SelectListItem> Customers { get; set; }
         public int CustomerId { get; set; }
         [Required]
         public string CustomerNAme { get; set; }
+        public ProductDetailsViewModel ProdDetails { get; set; }
 
-       // public IEnumerable<SelectListItem>  SalesListItems{ get; set; }
+        // public IEnumerable<SelectListItem>  SalesListItems{ get; set; }
         public  IEnumerable<SelectListItem> ProductDetails { get; set; }
         [Display(Name = "Product Name")]
         public int ProductId { get; set; }
@@ -30,6 +31,8 @@ namespace hardwarestore.Models
         public int Quantity { get; set; }
         [Required]
         public double Total { get; set; }
+        [Display(Name ="Date-Time")]
+        public DateTime SalesDate { get; set; }
 
     }
 }
