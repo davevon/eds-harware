@@ -6,7 +6,7 @@ using hardwarestore.Data;
 
 namespace hardwarestore.Contracts
 {
-    public interface IProductDetailsRepository:IRepositoryBase<ProductDetails>
+    public interface IProductDetailsRepository:IRepositoryBase<ProductDetail>
     {
     }
 }

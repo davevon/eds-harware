@@ -20,7 +20,7 @@ namespace hardwarestore.Data
         public string CustomerNAme{ get; set; }
         
         [ForeignKey("ProductId")]
-        public ProductDetails ProdDetails { get; set; }
+        public ProductDetail ProdDetails { get; set; }
 
         public int ProductId { get; set; }
 

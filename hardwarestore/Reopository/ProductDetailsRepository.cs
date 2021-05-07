@@ -17,7 +17,7 @@ namespace hardwarestore.Reopository
             _db = db;// passing an object inside the so we can get the information for the database.
         }
 
-        public bool Create(ProductDetails entity)
+        public bool Create(ProductDetail entity)
         {
             _db.ProdDetails.Add(entity);
             return save();
@@ -25,21 +25,21 @@ namespace hardwarestore.Reopository
            // throw new NotImplementedException();
         }
 
-        public bool Delete(ProductDetails entity)
+        public bool Delete(ProductDetail entity)
         {
             _db.ProdDetails.Remove(entity);
             return save();
             //throw new NotImplementedException();
         }
 
-        public ICollection<ProductDetails> FindAll()
+        public ICollection<ProductDetail> FindAll()
         {
             _db.ProdDetails.ToList();
             return _db.ProdDetails.ToList();
             //throw new NotImplementedException();
         }
 
-        public ProductDetails FindById(int id)
+        public ProductDetail FindById(int id)
         {
             _db.ProdDetails.Find(id);
             return _db.ProdDetails.Find(id);
@@ -48,7 +48,7 @@ namespace hardwarestore.Reopository
 
         public bool isExist(int id)
         {
-            var exist = _db.Suppliers.Any(q => q.Id == id);
+            var exist = _db.ProdDetails.Any(q => q.ProductId == id);
             return exist;
         }
 
@@ -58,7 +58,7 @@ namespace hardwarestore.Reopository
            // throw new NotImplementedException();
         }
 
-        public bool Update(ProductDetails entity)
+        public bool Update(ProductDetail entity)
         {
             _db.ProdDetails.Update(entity);
             return save();

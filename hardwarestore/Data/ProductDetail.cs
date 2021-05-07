@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace hardwarestore.Data
 {
-    public class ProductDetails
+    public class ProductDetail
     {[Key]
         public int ProductId { get; set; }
 

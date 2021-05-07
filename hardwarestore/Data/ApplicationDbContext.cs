@@ -13,7 +13,7 @@ namespace hardwarestore.Data
         {
         } 
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<ProductDetails> ProdDetails { get; set; }
+        public DbSet<ProductDetail> ProdDetails { get; set; }
         public DbSet<ProductHistory> ProdHistories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Customer> Customers { get; set; }

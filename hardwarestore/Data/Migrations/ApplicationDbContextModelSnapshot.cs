@@ -246,9 +246,9 @@ namespace hardwarestore.Data.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("hardwarestore.Data.ProductDetails", b =>
+            modelBuilder.Entity("hardwarestore.Data.ProductDetail", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ProductDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -271,11 +271,11 @@ namespace hardwarestore.Data.Migrations
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("ProductDetailId");
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("ProdDetails");
+                    b.ToTable("ProductDetails");
                 });
 
             modelBuilder.Entity("hardwarestore.Data.ProductHistory", b =>
@@ -320,7 +320,10 @@ namespace hardwarestore.Data.Migrations
                     b.Property<string>("CustomerNAme")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ProductDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductName")
@@ -448,7 +451,7 @@ namespace hardwarestore.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("hardwarestore.Data.ProductDetails", b =>
+            modelBuilder.Entity("hardwarestore.Data.ProductDetail", b =>
                 {
                     b.HasOne("hardwarestore.Data.Supplier", "Supplier")
                         .WithMany()
@@ -476,15 +479,13 @@ namespace hardwarestore.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("hardwarestore.Data.ProductDetails", "ProdDetails")
+                    b.HasOne("hardwarestore.Data.ProductDetail", "ProductDetails")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Customer");
 
-                    b.Navigation("ProdDetails");
+                    b.Navigation("ProductDetails");
                 });
 #pragma warning restore 612, 618
         }

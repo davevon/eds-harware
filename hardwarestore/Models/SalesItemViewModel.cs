@@ -10,7 +10,7 @@ namespace hardwarestore.Models
     public class SalesItemViewModel
     {
         [Key]
-        public int SalesId { get; set; }
+        public int SalesItemId { get; set; }
 
         public CustomerViewModel Customer { get; set; }
         public IEnumerable<SelectListItem> Customers { get; set; }

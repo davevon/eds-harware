@@ -18,9 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.SupplierId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ProductDescription)
             </th>
@@ -46,9 +46,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.SupplierId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductDescription)
             </td>
@@ -65,11 +65,11 @@
 
             <td>
                 @* @Html.ActionLink("Edit", "Edit", new {  id=item.Id}) *@
-                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"> <i class="fa fa-pencil" aria-hidden="true"> </i>Edit</a>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.ProductId"> <i class="fa fa-pencil" aria-hidden="true"> </i>Edit</a>
                 @* <a asp-action="Details " class="btn btn-success" asp-route-id="@item.Id"> <i class="fa fa-info-circle" aria-hidden="true"> </i> Details</a>*@
-                <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Details" class="btn btn-success" asp-route-id="@item.ProductId">Details</a>
 
-                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id" onclick="return confirm('Are you sure you would want to delete this record ?😣')"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.ProductId" onclick="return confirm('Are you sure you would want to delete this record ?😣')"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 
                 @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@

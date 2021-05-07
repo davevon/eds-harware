@@ -24,6 +24,7 @@ namespace hardwarestore.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<IdentityUser> _userManager;
         public productdetailsController(IProductDetailsRepository repos, IMapper mapper,
+
              ISuppliersRepository Suppliersrepos, UserManager<IdentityUser> userManager)
         {
             _repos = repos;
@@ -35,7 +36,7 @@ namespace hardwarestore.Controllers
         public ActionResult Index()
         {
             var typesofdetails = _repos.FindAll().ToList();
-            var mappingtolist = _mapper.Map<List<ProductDetails>, List<ProductDetailsViewModel>>(typesofdetails);
+            var mappingtolist = _mapper.Map<List<ProductDetail>, List<ProductDetailsViewModel>>(typesofdetails);
             
             return View(mappingtolist);
           
@@ -90,7 +91,7 @@ namespace hardwarestore.Controllers
                 {
                     return View(model);
                 }
-                var product = _mapper.Map<ProductDetails>(model);
+                var product = _mapper.Map<ProductDetail>(model);
                 var issuccessful = _repos.Create(product);
                 if (!issuccessful)
                 {
@@ -129,7 +130,7 @@ namespace hardwarestore.Controllers
                 {
                     return View(model);
                 }
-                var productsdet = _mapper.Map<ProductDetails>(model);
+                var productsdet = _mapper.Map<ProductDetail>(model);
                 var isSucess = _repos.Update(productsdet);
                 if (!isSucess)
                 {

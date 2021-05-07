@@ -63,7 +63,13 @@ namespace hardwarestore.Controllers
         // GET: SalesItemController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_Salesrepos.isExist(id))
+            {
+                return NotFound();
+            }
+            var typesofproducts = _Salesrepos.FindById(id);
+            var model = _mapper.Map<SalesItemViewModel>(typesofproducts);
+            return View(model);
         }
 
         // GET: SalesItemController1/Create
@@ -154,7 +160,7 @@ namespace hardwarestore.Controllers
                     ProductName=model.ProductName,
                     ProductPrice = model.ProductPrice,
                    Quantity = model.Quantity,
-                   SalesId= model.SalesId,
+                   SalesItemId= model.SalesItemId,
                    Total = model.Total,
                     ProductId=model.ProductId
                    
@@ -185,37 +191,68 @@ namespace hardwarestore.Controllers
         // GET: SalesItemController1/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (!_Salesrepos.isExist(id))
+            {
+                return NotFound();
+            }
+            var leavetypes = _Salesrepos.FindById(id);
+            var model = _mapper.Map<SalesItemViewModel>(leavetypes);
+            return View(model);
         }
 
         // POST: SalesItemController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ProductDetailsViewModel model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var productsdet = _mapper.Map<SalesItem>(model);
+                var isSucess = _Salesrepos.Update(productsdet);
+                if (!isSucess)
+                {
+                    ModelState.AddModelError("", "Something went wrong");
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Something went wrong");
+                return View(model);
             }
         }
 
         // GET: SalesItemController1/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+
+            var productDetails = _Salesrepos.FindById(id);
+            var isSucess = _Salesrepos.Delete(productDetails);
+            if (!isSucess)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: SalesItemController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, SalesItemViewModel model)
         {
             try
             {
+                var productDetails = _Salesrepos.FindById(id);
+                var isSucess = _Salesrepos.Delete(productDetails);
+                if (!isSucess)
+                {
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
