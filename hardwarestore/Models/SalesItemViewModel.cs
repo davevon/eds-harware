@@ -14,6 +14,8 @@ namespace hardwarestore.Models
 
         public CustomerViewModel Customer { get; set; }
         public IEnumerable<SelectListItem> Customers { get; set; }
+
+       [Display(Name = "Customer Name")]
         public int CustomerId { get; set; }
         [Required]
         public string CustomerNAme { get; set; }
